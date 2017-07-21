@@ -1,6 +1,6 @@
 package xyz.sizuma.sge.data
 
-import xyz.sizuma.sge.data.Primitive.{Bool, Chars, Number, Real, Sequence}
+import xyz.sizuma.sge.data.Primitive.{Bool, Chars, Dictionary, Number, Real, Sequence}
 
 /**
   * Created by Teppei Shiroyama under MIT License.
@@ -67,6 +67,20 @@ object Conversions {
 
   implicit def seqFromPrimitive[A](implicit fromPrimitive: FromPrimitive[A]) : FromPrimitive[Seq[A]] = {
     case Sequence(primitives) => Some( primitives.flatMap(fromPrimitive.fromPrimitive) )
+    case _ => None
+  }
+
+  implicit def mapToPrimitive[A](implicit toPrimitive: ToPrimitive[A]) : ToPrimitive[Map[String,A]] = map => Dictionary(map.mapValues(toPrimitive.toPrimitive))
+
+  implicit def mapFromPrimitive[A](implicit fromPrimitive: FromPrimitive[A]) : FromPrimitive[Map[String,A]] = {
+    case Dictionary(map) => Some( map.flatMap({
+      case (k,v) =>
+        val vOpt = fromPrimitive.fromPrimitive(v)
+        vOpt match {
+          case None => None
+          case Some(p) => Some(k,p)
+        }
+    }))
     case _ => None
   }
 }
