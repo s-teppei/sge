@@ -20,6 +20,7 @@ object Primitive {
   }
 
   implicit class Writer(val dictionary: Dictionary) extends AnyVal {
+    def +(key:String,primitive: Primitive) : Dictionary = Dictionary(dictionary.map + (key -> primitive))
     def +[A](key:String,data:A)(implicit toPrimitive: ToPrimitive[A]) : Dictionary = Dictionary(dictionary.map + (key -> toPrimitive.toPrimitive(data)))
   }
 }
