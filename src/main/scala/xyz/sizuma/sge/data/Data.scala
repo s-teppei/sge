@@ -17,6 +17,9 @@ object Primitive {
 
   implicit class Reader(val dictionary: Dictionary) extends AnyVal {
     def get[A](key:String)(implicit fromPrimitive: FromPrimitive[A]) : Option[A] = dictionary.map.get(key).flatMap(fromPrimitive.fromPrimitive)
+  }
+
+  implicit class Writer(val dictionary: Dictionary) extends AnyVal {
     def +[A](key:String,data:A)(implicit toPrimitive: ToPrimitive[A]) : Dictionary = Dictionary(dictionary.map + (key -> toPrimitive.toPrimitive(data)))
   }
 }
