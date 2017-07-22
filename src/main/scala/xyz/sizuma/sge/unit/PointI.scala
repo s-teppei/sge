@@ -8,7 +8,7 @@ import xyz.sizuma.sge.data.Conversions._
   */
 case class PointI(x:Int,y:Int,z:Int = 0) extends Point[Int]
 
-object PointI {
+object PointI extends ConversionFor[PointI]{
   implicit val conversion:PrimitiveConversion[PointI] = new PrimitiveConversion[PointI] {
     override def fromPrimitive(primitive: Primitive): Option[PointI] = {
       primitive match {
