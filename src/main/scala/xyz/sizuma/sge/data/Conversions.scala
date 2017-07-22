@@ -63,6 +63,13 @@ object Conversions {
     }
   }
 
+  implicit val stringConversion = new PrimitiveConversion[String] {
+    override def toPrimitive(a: String): Primitive = Primitive.Chars(a)
+    override def fromPrimitive(primitive: Primitive): Option[String] = primitive match {
+      case Chars(string) => Some(string)
+      case _ => None
+    }
+  }
   implicit def seqToPrimitive[A](implicit toPrimitiveA: ToPrimitive[A]) : ToPrimitive[Seq[A]] = seq => Sequence(seq.map(toPrimitiveA.toPrimitive))
 
   implicit def seqFromPrimitive[A](implicit fromPrimitive: FromPrimitive[A]) : FromPrimitive[Seq[A]] = {
