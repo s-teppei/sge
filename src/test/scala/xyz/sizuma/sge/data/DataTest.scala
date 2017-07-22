@@ -41,6 +41,11 @@ class DataTest extends FlatSpec with Matchers{
     assert( parse("{}").contains(Dictionary.empty()))
     assert( parse("{ a : 1}").contains(Dictionary(Map( ("a",Primitive.Number(1))))))
   }
+
+  "A Null Json Parser" should "parse correctly" in {
+    assert( parse(null).contains(Null))
+  }
+
   "A Json Parser" should "parse complex json correctly" in {
     val json =
       """{

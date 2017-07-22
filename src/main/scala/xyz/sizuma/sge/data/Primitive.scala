@@ -23,5 +23,6 @@ object Primitive {
   object Dictionary {
     def empty():Dictionary = Dictionary(Map.empty)
   }
-  case object Null extends Primitive
+  sealed trait Null extends Primitive
+  case object Null extends Null
 }

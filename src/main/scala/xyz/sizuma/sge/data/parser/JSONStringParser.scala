@@ -7,6 +7,11 @@ import xyz.sizuma.sge.data.parser.DataParser.DataParserAdaptor
   * Created by Teppei Shiroyama under MIT License.
   */
 object JSONStringParser extends DataParserAdaptor{
+
+  override def parseNull: JSONStringParser.Parser[Primitive.Null] = "null" ^^ {
+    case _ => Primitive.Null
+  }
+
   override def parseNumber: JSONStringParser.Parser[Primitive.Number] = ("+" | "-" | "") ~ """[0-9]+""".r ^^ {
     case (sign ~ str) => Primitive.Number( (sign+str).toLong )
   }

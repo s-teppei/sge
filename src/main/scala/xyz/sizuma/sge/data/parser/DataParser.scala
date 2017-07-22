@@ -20,10 +20,10 @@ object DataParser {
     def parseBool:Parser[Primitive.Bool]
     def parseSequence:Parser[Primitive.Sequence]
     def parseDictionary:Parser[Primitive.Dictionary]
+    def parseNull:Parser[Primitive.Null]
+    def parsers:Parser[Primitive] = parseNull | parseBool | parseReal |parseNumber  | parseString | parseDictionary | parseSequence
 
-    def parsers:Parser[Primitive] = parseBool | parseReal |parseNumber  | parseString | parseDictionary | parseSequence
-
-    override def parse(from: String): Option[Primitive] = parseAll(parsers,from) match {
+    override def parse(from: String): Option[Primitive] = if(from == null) Option( Primitive.Null )else parseAll(parsers,from) match {
       case Success(primitive,_) => Some(primitive)
       case _ => None
     }
