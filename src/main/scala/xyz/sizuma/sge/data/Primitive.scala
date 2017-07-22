@@ -15,18 +15,13 @@ object Primitive {
   object Sequence{
     def empty():Sequence = Sequence(Seq.empty)
   }
-  case class Dictionary(map: Map[String,Primitive]) extends Primitive
+  case class Dictionary(map: Map[String,Primitive]) extends Primitive {
+    def get[A](key:String)(implicit fromPrimitive: FromPrimitive[A]) : Option[A] = map.get(key).flatMap(fromPrimitive.fromPrimitive)
+    def +(key:String,primitive: Primitive) : Dictionary = Dictionary(map + (key -> primitive))
+    def +[A](key:String,data:A)(implicit toPrimitive: ToPrimitive[A]) : Dictionary = Dictionary(map + (key -> toPrimitive.toPrimitive(data)))
+  }
   object Dictionary {
     def empty():Dictionary = Dictionary(Map.empty)
   }
   case object Null extends Primitive
-
-  implicit class Reader(val dictionary: Dictionary) extends AnyVal {
-    def get[A](key:String)(implicit fromPrimitive: FromPrimitive[A]) : Option[A] = dictionary.map.get(key).flatMap(fromPrimitive.fromPrimitive)
-  }
-
-  implicit class Writer(val dictionary: Dictionary) extends AnyVal {
-    def +(key:String,primitive: Primitive) : Dictionary = Dictionary(dictionary.map + (key -> primitive))
-    def +[A](key:String,data:A)(implicit toPrimitive: ToPrimitive[A]) : Dictionary = Dictionary(dictionary.map + (key -> toPrimitive.toPrimitive(data)))
-  }
 }
