@@ -9,7 +9,7 @@ import xyz.sizuma.sge.unit.Point
   */
 class GridLayout2(val w:Int,val h:Int,val vCount:Int,val hCount:Int) extends LayoutManager2{
 
-  private[this] var buffer = Map.empty[Component,Point[Int]]
+  private[this] var buffer = Map.empty[java.awt.Component,Point[Int]]
   private[this] val componentDimension = new Dimension(w,h)
   private[this] val parentDimension = new Dimension(w*hCount,h*vCount)
 
@@ -21,14 +21,14 @@ class GridLayout2(val w:Int,val h:Int,val vCount:Int,val hCount:Int) extends Lay
 
   override def maximumLayoutSize(target: Container): Dimension = parentDimension
 
-  override def addLayoutComponent(comp: Component, constraints: scala.Any): Unit = constraints match {
+  override def addLayoutComponent(comp: java.awt.Component, constraints: scala.Any): Unit = constraints match {
     case p:Point[Int] =>
       buffer += comp -> p
   }
 
   override def preferredLayoutSize(parent: Container): Dimension = parentDimension
 
-  override def removeLayoutComponent(comp: Component): Unit = {
+  override def removeLayoutComponent(comp: java.awt.Component): Unit = {
     buffer = buffer.filterNot({
       case (_,c) => c == comp
     })
@@ -44,5 +44,5 @@ class GridLayout2(val w:Int,val h:Int,val vCount:Int,val hCount:Int) extends Lay
     })
   }
 
-  override def addLayoutComponent(name: String, comp: Component): Unit = ???
+  override def addLayoutComponent(name: String, comp: java.awt.Component): Unit = ???
 }

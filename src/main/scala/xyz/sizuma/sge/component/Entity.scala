@@ -5,5 +5,15 @@ import java.util.Observable
 /**
   * Created by Teppei Shiroyama under MIT License.
   */
-trait Entity[A] extends HasState[A] with Component {
+abstract class Entity[A] extends Observable with Component {
+  def initialState : A
+
+  private[this] var _state = initialState
+
+  def state:A = _state
+  def state_=(newState : A):Unit = {
+    _state = newState
+    setChanged()
+    notifyObservers()
+  }
 }
