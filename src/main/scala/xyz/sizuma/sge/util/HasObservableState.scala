@@ -12,6 +12,6 @@ trait HasObservableState[A] extends Observable[A]{
 
   def state_=(newState : A):Unit = {
     _state = newState
-    notifyToObservers()
+    notifyObservers()
   }
 }

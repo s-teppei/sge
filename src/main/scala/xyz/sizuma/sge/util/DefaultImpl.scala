@@ -7,7 +7,7 @@ trait DefaultImpl[A] {
   self : Observable[A] =>
   private[this] var observers = Seq.empty[Observer[A]]
 
-  override def notifyToObservers(): Unit = observers.foreach(_.onUpdate(this))
+  override def notifyObservers(): Unit = observers.foreach(_.onUpdate(this))
 
   override def observe(observer: Observer[A]): Unit = observers :+= observer
 

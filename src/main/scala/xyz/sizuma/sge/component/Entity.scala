@@ -13,6 +13,6 @@ abstract class Entity[A] extends Observable[A] with DefaultImpl[A] with Componen
   def state:A = _state
   def state_=(newState : A):Unit = {
     _state = newState
-    notifyToObservers()
+    notifyObservers()
   }
 }
