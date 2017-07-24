@@ -8,11 +8,11 @@ import xyz.sizuma.sge.util.Observable
 /**
   * Created by Teppei Shiroyama under MIT License.
   */
-class ComponentRender(val component: Component) extends JPanel{
+class ComponentRender(val component: Component) extends JPanel {
 
   component match {
-    case observable : Observable[_] =>
-      observable.observe( _ => {
+    case observable: Observable[_] =>
+      observable.observe(_ => {
         this.revalidate()
         this.repaint()
       })
