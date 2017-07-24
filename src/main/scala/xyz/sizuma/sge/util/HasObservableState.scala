@@ -6,7 +6,7 @@ package xyz.sizuma.sge.util
 trait HasObservableState[A] extends Observable[A]{
   private[this] var _state = initialState
 
-  def initialState : A
+  protected def initialState : A
 
   def state:A = _state
 

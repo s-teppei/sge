@@ -24,7 +24,7 @@ object Main {
     override def timer: Timer = t
     override def delay: Int = 0
     override def interval: Int = 1000
-    override def initialState: Int = 0
+    override protected def initialState: Int = 0
     override def render(graphics2D: Graphics2D): Unit = graphics2D.drawString(state.toString,10,10)
   }
 }

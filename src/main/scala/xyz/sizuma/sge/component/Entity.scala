@@ -8,7 +8,7 @@ import xyz.sizuma.sge.util.{DefaultImpl, HasObservableState, Observable}
 abstract class Entity[A] extends HasObservableState[A] with DefaultImpl[A] with Component {
   private[this] var _state = initialState
 
-  def initialState: A
+  protected def initialState: A
 
   override def state: A = _state
 
