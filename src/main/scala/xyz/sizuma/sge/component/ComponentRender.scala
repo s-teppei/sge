@@ -1,8 +1,9 @@
 package xyz.sizuma.sge.component
 
 import java.awt.{Graphics, Graphics2D}
-import java.util.Observable
 import javax.swing.JPanel
+
+import xyz.sizuma.sge.util.Observable
 
 /**
   * Created by Teppei Shiroyama under MIT License.
@@ -10,8 +11,8 @@ import javax.swing.JPanel
 class ComponentRender(val component: Component) extends JPanel{
 
   component match {
-    case observable : Observable =>
-      observable.addObserver( (_,_) => {
+    case observable : Observable[_] =>
+      observable.observe( _ => {
         this.revalidate()
         this.repaint()
       })
