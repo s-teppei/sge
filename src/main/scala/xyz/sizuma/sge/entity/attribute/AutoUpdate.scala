@@ -1,4 +1,4 @@
-package xyz.sizuma.sge.entity
+package xyz.sizuma.sge.entity.attribute
 
 import java.util.{Timer, TimerTask}
 

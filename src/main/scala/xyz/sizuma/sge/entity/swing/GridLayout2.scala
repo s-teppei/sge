@@ -1,4 +1,4 @@
-package xyz.sizuma.sge.entity
+package xyz.sizuma.sge.entity.swing
 
 import java.awt._
 

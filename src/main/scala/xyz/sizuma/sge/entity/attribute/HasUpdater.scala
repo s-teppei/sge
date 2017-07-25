@@ -1,4 +1,6 @@
-package xyz.sizuma.sge.entity
+package xyz.sizuma.sge.entity.attribute
+
+import xyz.sizuma.sge.entity.Entity
 
 /**
   * Created by Teppei Shiroyama under MIT License.

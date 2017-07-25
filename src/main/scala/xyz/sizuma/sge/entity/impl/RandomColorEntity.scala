@@ -4,7 +4,9 @@ import java.awt.{Color, Graphics, Graphics2D}
 import java.util.Timer
 import javax.swing.JComponent
 
-import xyz.sizuma.sge.entity.{AutoUpdate, Entity, HasUpdater, ObserverJPanel, RenderFor}
+import xyz.sizuma.sge.entity.attribute.{AutoUpdate, HasUpdater}
+import xyz.sizuma.sge.entity.swing.{ObserverJPanel, RenderFor}
+import xyz.sizuma.sge.entity.Entity
 import xyz.sizuma.sge.util.Observable
 
 import scala.util.Random
