@@ -5,7 +5,7 @@ import xyz.sizuma.sge.util.{DefaultImpl, HasObservableState, Observable}
 /**
   * Created by Teppei Shiroyama under MIT License.
   */
-abstract class Entity[A] extends HasObservableState[A] with DefaultImpl[A] with Component {
+abstract class Entity[A] extends HasObservableState[A] with DefaultImpl[A] {
   private[this] var _state = initialState
 
   protected def initialState: A
