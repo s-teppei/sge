@@ -1,4 +1,4 @@
-package xyz.sizuma.sge.component
+package xyz.sizuma.sge.entity
 
 /**
   * Created by Teppei Shiroyama under MIT License.

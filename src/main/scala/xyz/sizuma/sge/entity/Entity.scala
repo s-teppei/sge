@@ -1,4 +1,4 @@
-package xyz.sizuma.sge.component
+package xyz.sizuma.sge.entity
 
 import xyz.sizuma.sge.util.{DefaultImpl, HasObservableState, Observable}
 

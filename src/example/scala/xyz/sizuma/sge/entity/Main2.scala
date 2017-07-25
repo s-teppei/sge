@@ -1,9 +1,9 @@
-package xyz.sizuma.sge.component
+package xyz.sizuma.sge.entity
 
 import java.awt.BorderLayout
 import javax.swing.JFrame
 
-import xyz.sizuma.sge.component.impl.RandomColorEntity
+import xyz.sizuma.sge.entity.impl.RandomColorEntity
 
 /**
   * Created by Teppei Shiroyama under MIT License.

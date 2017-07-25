@@ -1,10 +1,10 @@
-package xyz.sizuma.sge.component.impl
+package xyz.sizuma.sge.entity.impl
 
 import java.awt.{Color, Graphics, Graphics2D}
 import java.util.Timer
 import javax.swing.JComponent
 
-import xyz.sizuma.sge.component.{AutoUpdate, Entity, HasUpdater, ObserverJPanel, RenderFor}
+import xyz.sizuma.sge.entity.{AutoUpdate, Entity, HasUpdater, ObserverJPanel, RenderFor}
 import xyz.sizuma.sge.util.Observable
 
 import scala.util.Random
