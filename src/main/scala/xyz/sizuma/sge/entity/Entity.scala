@@ -14,6 +14,5 @@ abstract class Entity[A] extends HasObservableState[A] with DefaultImpl[A] {
 
   override def state_=(newState: A): Unit = {
     _state = newState
-    notifyObservers()
   }
 }

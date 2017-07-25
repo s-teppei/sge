@@ -1,17 +1,15 @@
 package xyz.sizuma.sge.util
 
+import xyz.sizuma.sge.entity.attribute.HasState
+
 /**
   * Created by Teppei Shiroyama under MIT License.
   */
-trait HasObservableState[A] extends Observable[A]{
-  private[this] var _state = initialState
-
+trait HasObservableState[A] extends Observable[A] with HasState[A]{
   protected def initialState : A
 
-  def state:A = _state
-
-  def state_=(newState : A):Unit = {
-    _state = newState
+  abstract override protected def state_=(newState: A): Unit = {
+    super.state_=(newState)
     notifyObservers()
   }
 }
