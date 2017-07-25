@@ -4,7 +4,7 @@ import java.awt.{Color, Graphics, Graphics2D}
 import java.util.Timer
 import javax.swing.JComponent
 
-import xyz.sizuma.sge.entity.attribute.{AutoUpdate, HasUpdater}
+import xyz.sizuma.sge.entity.attribute.{AutoUpdate, HasSelfState, HasUpdater}
 import xyz.sizuma.sge.entity.swing.RenderFor
 import xyz.sizuma.sge.entity.Entity
 import xyz.sizuma.sge.swing.ObserverJPanel
@@ -15,7 +15,7 @@ import scala.util.Random
 /**
   * Created by Teppei Shiroyama under MIT License.
   */
-class RandomColorEntity(override val timer:Timer = new Timer(),override val delay:Int = 0,override val interval:Int = 1000) extends Entity[Color] with HasUpdater[Color] with AutoUpdate{
+class RandomColorEntity(override val timer:Timer = new Timer(),override val delay:Int = 0,override val interval:Int = 1000) extends Entity[Color] with HasUpdater[Color] with AutoUpdate with HasSelfState[Color]{
   protected def randomColor:Color = {
     val random = new Random
     def random256 = random.nextInt(256)

@@ -3,7 +3,7 @@ package xyz.sizuma.sge.util
 /**
   * Created by Teppei Shiroyama under MIT License.
   */
-trait DefaultImpl[A] {
+trait ObservableDefaultImpl[A] {
   self : Observable[A] =>
   private[this] var observers = Seq.empty[Observer[A]]
 
