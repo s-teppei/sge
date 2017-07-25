@@ -5,8 +5,9 @@ import java.util.Timer
 import javax.swing.JComponent
 
 import xyz.sizuma.sge.entity.attribute.{AutoUpdate, HasUpdater}
-import xyz.sizuma.sge.entity.swing.{ObserverJPanel, RenderFor}
+import xyz.sizuma.sge.entity.swing.RenderFor
 import xyz.sizuma.sge.entity.Entity
+import xyz.sizuma.sge.swing.ObserverJPanel
 import xyz.sizuma.sge.util.Observable
 
 import scala.util.Random

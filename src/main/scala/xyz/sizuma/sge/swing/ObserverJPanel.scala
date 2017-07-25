@@ -1,4 +1,4 @@
-package xyz.sizuma.sge.entity.swing
+package xyz.sizuma.sge.swing
 
 import javax.swing.JPanel
 
