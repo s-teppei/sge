@@ -1,8 +1,7 @@
 package xyz.sizuma.sge.component
 
-import java.awt.{BorderLayout, Graphics}
-import java.util.Timer
-import javax.swing.{JComponent, JFrame, JPanel}
+import java.awt.BorderLayout
+import javax.swing.JFrame
 
 import xyz.sizuma.sge.component.impl.RandomColorEntity
 

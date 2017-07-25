@@ -23,7 +23,7 @@ class RandomColorEntity(override val timer:Timer = new Timer(),override val dela
   override def update(oldState: Color): Color = randomColor
 }
 
-object RandomColorEntity{
+object RandomColorEntity extends RenderFor[RandomColorEntity]{
   class RandomColorEntityRender(randomColorEntity: RandomColorEntity) extends ObserverJPanel[Color](randomColorEntity) {
 
     override def paintComponent(g: Graphics): Unit = {
@@ -34,5 +34,5 @@ object RandomColorEntity{
     }
   }
 
-  implicit val renderFor:RenderFor[RandomColorEntity] = entity => new RandomColorEntityRender(entity)
+  override implicit def genRender(entity: RandomColorEntity): JComponent = new RandomColorEntityRender(entity)
 }
