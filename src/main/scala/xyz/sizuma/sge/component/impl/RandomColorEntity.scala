@@ -1,9 +1,11 @@
 package xyz.sizuma.sge.component.impl
 
-import java.awt.{Color, Graphics2D}
+import java.awt.{Color, Graphics, Graphics2D}
 import java.util.Timer
+import javax.swing.JComponent
 
-import xyz.sizuma.sge.component.{AutoUpdate, Entity, HasUpdater}
+import xyz.sizuma.sge.component.{AutoUpdate, Entity, HasUpdater, ObserverJPanel, RenderFor}
+import xyz.sizuma.sge.util.Observable
 
 import scala.util.Random
 
@@ -19,4 +21,18 @@ class RandomColorEntity(override val timer:Timer = new Timer(),override val dela
 
   override protected def initialState: Color = randomColor
   override def update(oldState: Color): Color = randomColor
+}
+
+object RandomColorEntity{
+  class RandomColorEntityRender(randomColorEntity: RandomColorEntity) extends ObserverJPanel[Color](randomColorEntity) {
+
+    override def paintComponent(g: Graphics): Unit = {
+      super.paintComponent(g)
+      val bounds = g.getClipBounds
+      g.setColor(randomColorEntity.state)
+      g.fillRect(0,0,bounds.width,bounds.height)
+    }
+  }
+
+  implicit val renderFor:RenderFor[RandomColorEntity] = entity => new RandomColorEntityRender(entity)
 }
