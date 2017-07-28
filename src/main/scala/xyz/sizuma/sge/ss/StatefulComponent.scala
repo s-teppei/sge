@@ -10,4 +10,9 @@ abstract class StatefulComponent[A] extends JPanel {
   protected def state:A
   protected def state_=(newState:A):Unit
 
+  protected def onStateUpdated():Unit = {
+    this.revalidate()
+    this.repaint()
+  }
+
 }
