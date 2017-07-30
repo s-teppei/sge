@@ -12,7 +12,7 @@ trait StatefulComponent[A] {
   protected def state:A
   protected def state_=(newState:A):Unit
 
-  protected def onStateUpdated():Unit = {
+  def onStateUpdated():Unit = {
     this.revalidate()
     this.repaint()
   }
